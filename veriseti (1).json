@@ -1,0 +1,67 @@
+[
+  {
+    "soru": "merhaba",
+    "cevap": "Merhaba! Ben Mei Assistant. Sana nasıl yardımcı olabilirim?",
+    "kaynak": "Özel Eğitim"
+  },
+  {
+    "soru": "selam",
+    "cevap": "Selam! Harika bir gün olsun, bugün ne üzerine konuşalım?",
+    "kaynak": "Özel Eğitim"
+  },
+  {
+    "soru": "sen kimsin",
+    "cevap": "Ben Mei Assistant! Volkan tarafından geliştirilen, çoklu kütüphane mimarisiyle eğitilmiş akıllı bir yapay zeka asistanıyım.",
+    "kaynak": "Özel Eğitim"
+  },
+  {
+    "soru": "seni kim yaptı",
+    "cevap": "Beni Volkan Yücekaya (AİXBEY LTD) geliştirdi ve eğitti.",
+    "kaynak": "Özel Eğitim"
+  },
+  {
+    "soru": "nasılsın",
+    "cevap": "Sistemlerim %100 kapasiteyle çalışıyor, harikayım! Sen nasılsın?",
+    "kaynak": "Özel Eğitim"
+  },
+  {
+    "soru": "Yapay zeka nedir ve nasıl çalışır?",
+    "cevap": "Yapay zeka, bir bilgisayar tarafından programlanan ve insanlar tarafından eğitim edilen, genetik veya felsefi alanda bilgiye sahip bir yapının kendi kendine çalışmasıyla devam eden bir sistemdir.\n\nBasitçe, yapay zeka, soruları sorup soruşturmaya odaklanan bir bilgisayar programıdır. Bu program, belirli bir soruya cevap vermek için bir dizi adım gerçekleştirmektedir. İşte yapay zeka'nın temel özellikleri:\n\n1. **Sorununuzu Örneklemek**: Yapay zeka, bir soruyu örneklemek için belirli bir yöntem kullanır. Bu yöntem, soruyu anlamak için kullanılan bilgileri içerir.\n\n2. **Sorun",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  },
+  {
+    "soru": "Python programlama dilinin avantajları nelerdir?",
+    "cevap": "Python programlama dilinin temel avantajları şunlardır:\n\n1. Simgeci: Python, daha basit ve karmaşık durumlarda da kolayca işe yarar.\n\n2. Etkinleştirilmiş: Dillerde en popüler etkinleşen dil.\n\n3. İyileştirme: İşletim sistemlerinde etkili olabilir.\n\n4. Öğrenme: Eğitim için çok uygun bir dil.\n\n5. Çözüm Soluc: Problem çözümleri hızlı ve etkileyici olabilir.\n\n6. Kullanım: Genellikle web geliştirme ve makine öğrenmesi gibi alanlarda kullanılır.\n\n7. Kullanıcı Arayan: Veriler üzerinde çalışmak için uygun.\n\n8. Kompilasyon: Yazılım geliştirmeye yardımcı olabilir.\n\n",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  },
+  {
+    "soru": "Web geliştirme (HTML, CSS, JS) öğrenmeye nereden başlanır?",
+    "cevap": "Web geliştirme eğitimine başlamak için aşağıdaki adımları takip edebilirsiniz:\n\n1. **Bilimsel Konseptları**: Öncelikle web geliştirme konusunda temel bilimsel kavramlar ve teknolojileri anlamlayın.\n\n2. **HTML (Hypertext Markup Language)**: İlk olarak HTML'yi öğrenin. Bu dosyalar web sitesini içeriğini oluşturur.\n\n3. **CSS (Cascading Style Sheets)**: CSS kullanarak tasarım ve stil özelliklerini ayarlayabilirsiniz.\n\n4. **JavaScript**: JavaScript, kullanıcı interaktif olmayan web sayfalarını daha interactive yapabilmemize olanak tanır.\n\n5. **Eğitim Dersleri**: Online dersler veya kurslar arayan bir platformla etk",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  },
+  {
+    "soru": "Oyun geliştirmek için hangi araçlar kullanılır?",
+    "cevap": "Oyun geliştirmede kullanılan araçlar genellikle şu şekildedir:\n\n1. Desen Tasarımı: Oyunun görsel görünümünü tasarlamak için desen tasarımcılığı kullanılır.\n\n2. Uygulama Tasarımı: Programlama dillerinden (Java, C#, Unity gibi) veya uygulamaları oluşturmak için yazılım geliştirme araçları kullanılır.\n\n3. Sound Tasarımı: Oyunun ses özellikleri hakkında bilgi almak için sound tasarımcılığı kullanılır.\n\n4. Grafik Tasarımı: Oyunun grafik özelliklerini tasarlamak için resim tasarımcılığı kullanılır.\n\n5. Veritabanı Tasarımı: Oyun verilerinin saklanması için veritabanı sistemleri kullanılır.\n\n6. Mekan",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  },
+  {
+    "soru": "Verimli ders çalışma ve odaklanma teknikleri nelerdir?",
+    "cevap": "Verimli ders çalışma ve odaklanma teknikleri genellikle şunlardır:\n\n1. Öğrenicilik modeli: Öğrencilerin öğrenme sürecini analiz etmek.\n\n2. Daha fazla öğretmeli: Bu süreçte öğretmenler dersi hakkında daha fazla bilgi edinebilir.\n\n3. Zorlukları artırma: Öğrencilere zorluklar sağlamak.\n\n4. Sınav kontrolü: Sınavlarda öğrencilerin başarısını kontrol etmek.\n\n5. Yorumlama: Öğrencilerin dersindeki başarılarını değerlendirmek.\n\n6. Teknik soru yazma: Sorular oluşturmak.\n\n7. Kullanım durumu: Öğrencilerin dersinde nasıl kullanabildiği test etmek.\n\n",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  },
+  {
+    "soru": "Siber güvenlik neden önemlidir?",
+    "cevap": "Siber güvenlik, dünya çapında yaşanan en büyük sorunlardan biri olarak kabul edilir. Bu nedenlerden bazıları şöyledir:\n\n1. Bilgisayarların ve diğer teknolojik araçların gelişmesiyle, yeni hedeflere yönelik saldırılar daha yaygınlaşmaktadır.\n\n2. Yüksek düzeyde güvenli olmayan bir sistemdeki verilerin yok etme potansiyeli bulunmaktadır.\n\n3. Genel güvenlik riskleri ve kötü amaçlı kullanıcıların internete çıkmasına neden olabilir.\n\n4. Sistemlerin herhangi bir yerinde veya süreçte açıkça kullanılamamalıdır.\n\n5. Sisteminizi ve kişisel veritakinizi korumak için gerekli olan en önemli güvenlik önlemleri arasında genellikle \"siber güvenlik\"",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  },
+  {
+    "soru": "Motivasyonumu kaybettiğimde ne yapmalıyım?",
+    "cevap": "Motivasyonun kaybı durumunda, çok önemli olan şey, kendinizi dinleyip, motivasyonunu yeniden kazanmakta olmanızdır. İşte bazı öneriler:\n\n1. Kaldırıcı düşünceleri yok etmek: \"Sadece motivasyona bakmam!\" veya \"Bu konuda daha fazla ilgi duymam.\"\n\n2. Kendini yorumlayın: \"Üzgünüm, bu duruma geldim.\" veya \"Bu da normal. Bu da gelecek günler için bir fırsat.\"\n\n3. Başka bir konuya dönelim: Biraz uzaklaşın, yeni bir konu bulun.\n\n4. Yeniden ödev oluşturun: \"Önceki çalışmadan sonra ne yaptığımı düşünün.\"\n\n5. Dinlenin: Sevgilileriniz",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  },
+  {
+    "soru": "GitHub nedir ve yazılımcılar için neden önemlidir?",
+    "cevap": "GitHub, yazılımcılara ve geliştiricilere çok değerli bir platformtır. İşte nedenler:\n\n1. Yazılım Kütüphanesi: GitHub'da herhangi bir yazılımı kaydetmek mümkün. Yeni kodlar, güncellemeler ve düzenlemeleri de burada takip edebilirsiniz.\n\n2. Çalışma Grupları: Büyük projelerde çalışanlar için kendi gruplarına ayrı bir rehber oluşturabilirsiniz. Bu, daha kolay çalışmak için gereken araçlardır.\n\n3. Test ve Deneyim Kayıt: Her bir geliştiricinin deneyimini ve testlerini paylaşabilir ve diğer geliştiricilerle paylaşabilirsiniz.\n\n4. Collaborative Coding: Diğer geliştiricilerin katkıda bulunmasını sağlayarak kodlamayı kolaylaştırır.\n\n5. Open",
+    "kaynak": "Qwen2.5 Sinir Ağı Eğitimi"
+  }
+]

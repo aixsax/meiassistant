@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mei Assistant | Çoklu Yapay Zeka Motoru</title>
+    <!-- 1. KÜTÜPHANE: Fuse.js (Akıllı Bulanık Arama ve Eşleştirme Kütüphanesi) -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <!-- 2. KÜTÜPHANE: Marked.js (Zengin Metin ve Kod Gösterim Kütüphanesi) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: #0b0f19; color: #f8fafc; display: flex; flex-direction: column; height: 100vh; }
+        
+        header {
+            background: #111827;
+            padding: 14px 24px;
+            border-bottom: 1px solid #1f2937;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo-alan { display: flex; align-items: center; gap: 12px; }
+        .logo-alan h1 { font-size: 1.25rem; color: #38bdf8; font-weight: 700; }
+        
+        .kontroller { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        select {
+            background: #1f2937;
+            color: #e2e8f0;
+            border: 1px solid #374151;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        #durum {
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: #1e293b;
+            color: #fbbf24;
+            border: 1px solid #334155;
+        }
+
+        #sohbet-alani {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .mesaj {
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 82%;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+        .kullanici {
+            background: #2563eb;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        .bot {
+            background: #1e293b;
+            border: 1px solid #334155;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        .kaynak-etiket {
+            display: inline-block;
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-weight: 600;
+            background: #0f172a;
+            color: #38bdf8;
+            border: 1px solid #1e3a8a;
+        }
+
+        .alt-panel {
+            background: #111827;
+            padding: 15px 20px;
+            border-top: 1px solid #1f2937;
+        }
+        .girdi-kutusu {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+        input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #374151;
+            background: #0b0f19;
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        input:focus { border-color: #38bdf8; }
+        button {
+            padding: 12px 24px;
+            background: #38bdf8;
+            color: #0b0f19;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover { background: #0284c7; color: white; }
+        button:disabled { background: #374151; color: #9ca3af; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-alan">
+            <h1>🤖 Mei Assistant</h1>
+        </div>
+        <div class="kontroller">
+            <select id="model-secici" title="Aktif Yapay Zeka Beynini Seçin">
+                <option value="onnx-community/Qwen2.5-0.5B-Instruct">Motor 1: Qwen 2.5 (Zeki & Türkçe)</option>
+                <option value="HuggingFaceTB/SmolLM2-360M-Instruct">Motor 2: SmolLM2 (Ultra Hızlı)</option>
+                <option value="Xenova/LaMini-Flan-T5-248M">Motor 3: LaMini T5 (Yedek Hızlı Motor)</option>
+            </select>
+            <div id="durum">⏳ Kütüphaneler Hazırlanıyor...</div>
+        </div>
+    </header>
+
+    <div id="sohbet-alani">
+        <div class="mesaj bot">
+            <div class="kaynak-etiket">Sistem Aktif</div><br>
+            Merhaba! Ben <b>Mei Assistant</b>. 3 farklı kütüphane ile güçlendirildim:<br>
+            1️⃣ <b>Özel Veri Seti Motoru (Fuse.js)</b><br>
+            2️⃣ <b>Canlı Bilgi Bankası Kütüphanesi (Wiki-TR)</b><br>
+            3️⃣ <b>Sinir Ağı Yapay Zeka Kütüphanesi (Transformers.js)</b><br><br>
+            Yapay zeka modeli tarayıcınıza indirilirken bile bana soru sorabilirsiniz!
+        </div>
+    </div>
+
+    <div class="alt-panel">
+        <div class="girdi-kutusu">
+            <input type="text" id="mesaj-input" placeholder="Bana istediğiniz her şeyi sorun...">
+            <button id="gonder-btn">Gönder</button>
+        </div>
+    </div>
+
+    <!-- 3. KÜTÜPHANE: Transformers.js (Tarayıcı İçi Yapay Zeka Sinir Ağı) -->
+    <script type="module">
+        import { pipeline } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+
+        const durumEl = document.getElementById('durum');
+        const sohbetAlani = document.getElementById('sohbet-alani');
+        const inputEl = document.getElementById('mesaj-input');
+        const btnEl = document.getElementById('gonder-btn');
+        const modelSecici = document.getElementById('model-secici');
+
+        let aiGenerator = null;
+        let fuseMotoru = null;
+        let ozelVeriSeti = [];
+        let modelYukleniyor = false;
+
+        // 1. MOTOR: GitHub'daki veriseti.json dosyasını yükle ve Fuse.js ile indeksle
+        async function yerelVeriSetiniKur() {
+            try {
+                const res = await fetch('./veriseti.json');
+                if (res.ok) {
+                    ozelVeriSeti = await res.json();
+                    fuseMotoru = new Fuse(ozelVeriSeti, {
+                        keys: ['soru'],
+                        threshold: 0.4 // Yazım hatalarını tolere eder
+                    });
+                    console.log("1. Kütüphane (veriseti.json + Fuse.js) hazır!");
+                }
+            } catch (e) {
+                console.warn("veriseti.json okunamadı:", e);
+            }
+        }
+
+        // 2. MOTOR: Canlı Bilgi Bankası (Wikipedia Açık Kaynak Kütüphanesi)
+        async function canliBilgiAra(soru) {
+            try {
+                const temizSoru = soru.replace(/nedir|kimdir|ne demek|hakkında bilgi/gi, '').trim();
+                if (temizSoru.length < 2) return null;
+
+                const url = `https://tr.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(temizSoru)}&format=json&origin=*`;
+                const res = await fetch(url);
+                const data = await res.json();
+                const sonuclar = data?.query?.search;
+
+                if (sonuclar && sonuclar.length > 0) {
+                    const enIyi = sonuclar[0];
+                    const ozet = enIyi.snippet.replace(/<\/?[^>]+(>|$)/g, "");
+                    return `**${enIyi.title}:** ${ozet}...`;
+                }
+            } catch (e) {
+                console.warn("2. Kütüphane arama hatası:", e);
+            }
+            return null;
+        }
+
+        // 3. MOTOR: Yapay Zeka Sinir Ağı Modelini Yükle
+        async function aiModeliniYukle(modelAdi) {
+            if (modelYukleniyor) return;
+            modelYukleniyor = true;
+            aiGenerator = null;
+            durumEl.innerText = '⏳ AI Modeli İndiriliyor...';
+            durumEl.style.color = '#fbbf24';
+
+            try {
+                const gorev = modelAdi.includes('T5') ? 'text2text-generation' : 'text-generation';
+                aiGenerator = await pipeline(gorev, modelAdi, {
+                    dtype: 'q4',
+                    progress_callback: (p) => {
+                        if (p.status === 'progress') {
+                            durumEl.innerText = `⏳ AI Yükleniyor: %${Math.round(p.progress)}`;
+                        }
+                    }
+                });
+                durumEl.innerText = '● 3 Kütüphane Aktif (Hazır)';
+                durumEl.style.color = '#4ade80';
+            } catch (err) {
+                durumEl.innerText = '⚠️ AI Yedek Modda (Kütüphane 1 & 2 Aktif)';
+                durumEl.style.color = '#f87171';
+            }
+            modelYukleniyor = false;
+        }
+
+        function mesajEkle(icerik, kim, kaynak = '') {
+            const div = document.createElement('div');
+            div.className = `mesaj ${kim}`;
+            let html = '';
+            if (kaynak) {
+                html += `<div class="kaynak-etiket">${kaynak}</div><br>`;
+            }
+            html += marked.parse(icerik);
+            div.innerHTML = html;
+            sohbetAlani.appendChild(div);
+            sohbetAlani.scrollTop = sohbetAlani.scrollHeight;
+            return div;
+        }
+
+        async function yanitla() {
+            const soru = inputEl.value.trim();
+            if (!soru) return;
+
+            inputEl.value = '';
+            mesajEkle(soru, 'kullanici');
+            btnEl.disabled = true;
+
+            // ADIM 1: Önce 1. Kütüphaneye (veriseti.json + Fuse.js) sor
+            if (fuseMotoru) {
+                const aramaSonucu = fuseMotoru.search(soru);
+                if (aramaSonucu.length > 0) {
+                    mesajEkle(aramaSonucu[0].item.cevap, 'bot', '📚 1. Kütüphane: Özel Veri Seti');
+                    btnEl.disabled = false;
+                    return;
+                }
+            }
+
+            // ADIM 2: Bilgi sorusuysa veya AI henüz yüklenmediyse 2. Kütüphaneden bilgi çek
+            let wikiBilgisi = null;
+            if (soru.toLowerCase().includes('nedir') || soru.toLowerCase().includes('kimdir') || !aiGenerator) {
+                wikiBilgisi = await canliBilgiAra(soru);
+                if (wikiBilgisi && !aiGenerator) {
+                    mesajEkle(wikiBilgisi, 'bot', '🌐 2. Kütüphane: Canlı Bilgi Bankası');
+                    btnEl.disabled = false;
+                    return;
+                }
+            }
+
+            // ADIM 3: 3. Kütüphane (Transformers.js Yapay Zeka Modeli) ile kendi cümlelerini kur
+            if (aiGenerator) {
+                const beklemeDiv = mesajEkle('Düşünüyor ve cümle kuruyor...', 'bot', '🧠 3. Kütüphane: Yapay Zeka Sinir Ağı');
+                try {
+                    let sistemBilgisi = 'Senin adın Mei Assistant. Volkan tarafından geliştirilen zeki, samimi ve Türkçe konuşan bir yapay zeka asistanısın.';
+                    if (wikiBilgisi) {
+                        sistemBilgisi += ` Şu ek bilgiyi kullanarak cevap ver: ${wikiBilgisi}`;
+                    }
+
+                    const seciliModel = modelSecici.value;
+                    let yanitMetni = '';
+
+                    if (seciliModel.includes('T5')) {
+                        const cikti = await aiGenerator(`${sistemBilgisi} Soru: ${soru}`, { max_new_tokens: 150 });
+                        yanitMetni = cikti[0].generated_text;
+                    } else {
+                        const mesajlar = [
+                            { role: 'system', content: sistemBilgisi },
+                            { role: 'user', content: soru }
+                        ];
+                        const cikti = await aiGenerator(mesajlar, { max_new_tokens: 200, temperature: 0.7 });
+                        yanitMetni = cikti[0].generated_text.at(-1).content;
+                    }
+
+                    beklemeDiv.innerHTML = `<div class="kaynak-etiket">🧠 3. Kütüphane: Yapay Zeka Modeli</div><br>` + marked.parse(yanitMetni);
+                } catch (e) {
+                    if (wikiBilgisi) {
+                        beklemeDiv.innerHTML = `<div class="kaynak-etiket">🌐 2. Kütüphane: Yedek Bilgi Bankası</div><br>` + marked.parse(wikiBilgisi);
+                    } else {
+                        beklemeDiv.innerText = 'Şu an bu soruyu yanıtlayamadım, lütfen farklı şekilde sorar mısın?';
+                    }
+                }
+            } else {
+                // AI hala iniyorsa 2. kütüphaneyi zorla dene
+                const yedekBilgi = await canliBilgiAra(soru);
+                if (yedekBilgi) {
+                    mesajEkle(yedekBilgi, 'bot', '🌐 2. Kütüphane: Canlı Bilgi Bankası');
+                } else {
+                    mesajEkle('Yapay zeka beyni şu an tarayıcınıza indiriliyor (sağ üstten yüzdesini görebilirsiniz). İndirme bittiğinde her konuda kendi cümlelerimle sohbet edebileceğim!', 'bot', '⏳ Sistem Hazırlanıyor');
+                }
+            }
+
+            btnEl.disabled = false;
+        }
+
+        btnEl.addEventListener('click', yanitla);
+        inputEl.addEventListener('keypress', (e) => { if (e.key === 'Enter') yanitla(); });
+        modelSecici.addEventListener('change', (e) => aiModeliniYukle(e.target.value));
+
+        // Başlangıçta tüm kütüphaneleri ateşle
+        yerelVeriSetiniKur();
+        aiModeliniYukle(modelSecici.value);
+    </script>
+</body>
+</html>
